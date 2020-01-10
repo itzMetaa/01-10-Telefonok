@@ -118,6 +118,7 @@
             this.buttonFelvetel.TabIndex = 6;
             this.buttonFelvetel.Text = "Új telefon";
             this.buttonFelvetel.UseVisualStyleBackColor = true;
+            this.buttonFelvetel.Click += new System.EventHandler(this.buttonFelvetel_Click);
             // 
             // buttonModosit
             // 
@@ -141,16 +142,16 @@
             // 
             this.dataGridViewAdatok.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewAdatok.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridViewAdatok.Location = new System.Drawing.Point(0, 122);
+            this.dataGridViewAdatok.Location = new System.Drawing.Point(0, 113);
             this.dataGridViewAdatok.Name = "dataGridViewAdatok";
-            this.dataGridViewAdatok.Size = new System.Drawing.Size(368, 74);
+            this.dataGridViewAdatok.Size = new System.Drawing.Size(477, 74);
             this.dataGridViewAdatok.TabIndex = 1;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(368, 196);
+            this.ClientSize = new System.Drawing.Size(477, 187);
             this.Controls.Add(this.dataGridViewAdatok);
             this.Controls.Add(this.groupBoxTelefon);
             this.Name = "Form1";

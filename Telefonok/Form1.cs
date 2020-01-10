@@ -28,7 +28,7 @@ namespace Telefonok
             dataGridViewAdatok.Columns[2].HeaderText = "Típus";
             dataGridViewAdatok.Columns[3].Name = "ar";
             dataGridViewAdatok.Columns[3].HeaderText = "Ár";
-
+            adatokUpdate();
         }
 
         private void adatokUpdate()
@@ -41,7 +41,11 @@ namespace Telefonok
                 {
                     while (dr.Read())
                     {
-
+                        int sorIndex = dataGridViewAdatok.Rows.Add();
+                        dataGridViewAdatok.Rows[sorIndex].Cells["id"].Value = dr.GetInt32("id");
+                        dataGridViewAdatok.Rows[sorIndex].Cells["marka"].Value = dr.GetString("marka");
+                        dataGridViewAdatok.Rows[sorIndex].Cells["tipus"].Value = dr.GetString("tipus");
+                        dataGridViewAdatok.Rows[sorIndex].Cells["ar"].Value = dr.GetInt32("ar");
                     }
                 }
             }
@@ -50,6 +54,29 @@ namespace Telefonok
                 MessageBox.Show(e.Message);
                 return;
             }
+        }
+
+        private void buttonFelvetel_Click(object sender, EventArgs e)
+        {
+
+
+
+            Program.sql.CommandText = "INSERT INTO telefon (marka, tipus, ar) values (@marka,@tipus,@ar)";
+            Program.sql.Parameters.Clear();
+            Program.sql.Parameters.AddWithValue("@marka", textBoxMarka.Text);
+            Program.sql.Parameters.AddWithValue("@tipus", textBoxTipus.Text);
+            Program.sql.Parameters.AddWithValue("@ar", numericUpDownAr.Value);
+            try
+            {
+                Program.sql.ExecuteNonQuery();
+            }
+            catch (MySqlException e2)
+            {
+                MessageBox.Show(e2.Message);
+                return;
+            }
+            dataGridViewAdatok.Update();
+
         }
     }
 
