@@ -78,6 +78,36 @@ namespace Telefonok
             dataGridViewAdatok.Update();
 
         }
+
+        private void dataGridViewAdatok_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int kivalasztottSorIndex = dataGridViewAdatok.SelectedRows[0].Index;
+            textBoxMarka.Text = dataGridViewAdatok.Rows[kivalasztottSorIndex].Cells["marka"].Value.ToString();
+            textBoxTipus.Text = dataGridViewAdatok.Rows[kivalasztottSorIndex].Cells["tipus"].Value.ToString();
+            numericUpDownAr.Value = (int)dataGridViewAdatok.Rows[kivalasztottSorIndex].Cells["ar"].Value;
+
+        }
+
+        private void buttonModosit_Click(object sender, EventArgs e)
+        {
+            Program.sql.CommandText = "UPDATE telefon SET marka=@marka, tipus=@tipus, ar=@ar WHERE id=@id";
+            Program.sql.Parameters.Clear();
+            int sorIndex = dataGridViewAdatok.SelectedRows[0].Index;
+            Program.sql.Parameters.AddWithValue("@id", (int)dataGridViewAdatok.Rows[sorIndex].Cells["id"].Value);
+            Program.sql.Parameters.AddWithValue("@marka", textBoxMarka.Text);
+            Program.sql.Parameters.AddWithValue("@tipus", textBoxMarka.Text);
+            Program.sql.Parameters.AddWithValue("@marka", numericUpDownAr.Value);
+            try
+            {
+                Program.sql.ExecuteNonQuery();
+            }
+            catch (MySqlException e3)
+            {
+                MessageBox.Show(e3.Message);
+                return;
+            }
+            dataGridViewAdatok.Update();
+        }
     }
 
     

@@ -128,6 +128,7 @@
             this.buttonModosit.TabIndex = 7;
             this.buttonModosit.Text = "Adatmódosítás";
             this.buttonModosit.UseVisualStyleBackColor = true;
+            this.buttonModosit.Click += new System.EventHandler(this.buttonModosit_Click);
             // 
             // buttonTorles
             // 
@@ -146,6 +147,7 @@
             this.dataGridViewAdatok.Name = "dataGridViewAdatok";
             this.dataGridViewAdatok.Size = new System.Drawing.Size(477, 74);
             this.dataGridViewAdatok.TabIndex = 1;
+            this.dataGridViewAdatok.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAdatok_CellClick);
             // 
             // Form1
             // 
